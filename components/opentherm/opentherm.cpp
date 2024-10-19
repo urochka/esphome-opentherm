@@ -722,6 +722,7 @@ void OpenThermComponent::set_boiler_status_() {
   uint32_t data = this->wanted_ch_enabled_ | (this->wanted_dhw_enabled_ << 1) | (this->wanted_cooling_enabled_ << 2) |
                   (this->wanted_otc_active_ << 3) | (this->wanted_ch_2_enabled_ << 4);
   data <<= 8;
+  bitSet(request,7); bitSet(request,6); bitSet(request,3); bitSet(request,1);
   this->request_(OpenThermMessageType::READ_DATA, OpenThermMessageID::STATUS, data);
 }
 
